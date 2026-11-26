@@ -1,0 +1,2 @@
+// mongosh; replica set/sharded cluster required. Seed/update, then watch in a running shell.
+const id=ObjectId(); db.products.insertOne({_id:id,name:"Keyboard",price:850}); db.products.updateOne({_id:id},{$set:{price:900}}); const stream=db.products.watch([{$match:{operationType:"update"}}],{fullDocument:"updateLookup"}); print("Watching product updates; Ctrl+C to stop."); while(stream.hasNext()){const c=stream.next();if(c.updateDescription.updatedFields.price!==undefined) printjson({product:c.fullDocument.name,newPrice:c.updateDescription.updatedFields.price});}
