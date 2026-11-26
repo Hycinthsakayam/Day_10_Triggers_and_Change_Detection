@@ -1,0 +1,2 @@
+# Bank trigger notes
+The audit trigger records inserted, deleted and updated transaction rows. The view's INSTEAD OF trigger validates the entire update batch before changing savings accounts; a negative value rejects the whole batch. Nested triggers are chains where a trigger fires another; recursion is self-triggering. Avoid unnecessary updates to the triggering table, guard with TRIGGER_NESTLEVEL() when appropriate, and configure recursion deliberately. Protect audit tables with permissions; a trigger alone is not a tamper-proof security boundary.
