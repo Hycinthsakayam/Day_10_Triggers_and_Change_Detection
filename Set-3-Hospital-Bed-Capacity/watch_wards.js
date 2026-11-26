@@ -1,0 +1,2 @@
+// Change stream; replica set/sharded cluster required
+const stream=db.ward_alerts.watch([{$match:{operationType:"insert","fullDocument.severity":"critical"}}]); print("Watching critical ward alerts; Ctrl+C to stop."); while(stream.hasNext()){const e=stream.next();printjson({ward:e.fullDocument.ward,time:e.fullDocument.time});}
