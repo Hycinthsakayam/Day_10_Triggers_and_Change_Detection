@@ -1,0 +1,2 @@
+# Price audit notes
+The INSTEAD OF trigger validates the whole rowset and logs invalid below-cost attempts before rejecting the batch. The AFTER trigger audits changed prices using inserted/deleted, safely handling multi-row updates. Trigger risks include hidden logic that complicates debugging and nested/cascading side effects or locking. Application code/procedures are often better for complex workflow, external calls or user interaction. MongoDB Change Streams observe changes asynchronously and require replica-set/sharded infrastructure.
