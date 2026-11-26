@@ -1,0 +1,2 @@
+// mongosh Change Stream (replica set required)
+const stream=db.fraud_alerts.watch([{$match:{operationType:"insert"}}]); print("Listening for fraud alert inserts; Ctrl+C to stop."); while(stream.hasNext()){const c=stream.next();printjson(c.fullDocument);}
