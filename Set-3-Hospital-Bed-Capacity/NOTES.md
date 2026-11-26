@@ -1,0 +1,2 @@
+# Hospital capacity notes
+The INSTEAD OF INSERT trigger checks incoming admissions against current occupied beds and rejects an over-capacity batch. AFTER trigger records inserts, updates and deletes using inserted/deleted. For simple row-local rules, CHECK constraints are clearer; for workflow (bed allocation, waitlist, notifications), a stored procedure is often better. This sample illustrates trigger logic; production concurrency needs locking/serializable design to prevent simultaneous admissions racing past capacity.
